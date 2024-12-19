@@ -26,9 +26,11 @@
     {% perm 'user.edit' as can_edit_user %}
 
     <div class="user-page text-center">
-      <img class="avatar w128"
-           src="{% url 'user_avatar' user=page_user.username size=128 %}"
-           alt="{% trans "User avatar" %}" />
+      {% if enable_avatars %}
+        <img class="avatar w128"
+             src="{% url 'user_avatar' user=page_user.username size=128 %}"
+             alt="{% trans "User avatar" %}" />
+      {% endif %}
       <h3>{{ page_user }}</h3>
       <p>
         <span class="middle-dot-divider">@{{ page_user.username }}</span>
